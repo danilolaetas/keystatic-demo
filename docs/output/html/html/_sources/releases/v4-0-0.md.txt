@@ -6,7 +6,7 @@ releaseDate: 2026-04-16
 type: major
 status: published
 ---
-# Release Notes v10
+# v4.0.0
 
 ## Keystatic GitHub OAuth on Cloud Hub
 
