@@ -1,0 +1,42 @@
+# Build outputs (will be created during build)
+dist/
+build/
+node_modules/
+.astro/
+
+# Development files
+.git/
+.gitignore
+.vscode/
+.idea/
+*.log
+
+# Environment files (secrets passed via build args)
+.env*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+*.test.ts
+*.test.tsx
+*.spec.ts
+**/__tests__/
+
+# Documentation build artifacts
+docs/_build/
+docs/_source/
+docs/_temp_single_page/
+
+# Sphinx prepared content (regenerated)
+docs/faqs/
+docs/releases/
+
+# Scripts not needed in image
+scripts/
+*.sh
+
+# Documentation
+README.md
+CHANGELOG.md

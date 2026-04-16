@@ -1,0 +1,18 @@
+---
+title: How do I add content?
+description: Steps to create and publish new content entries.
+category: general
+---
+
+There are two ways to add content to your Keystatic-powered site.
+
+## Using the admin UI
+
+1. Navigate to `/keystatic` in your browser.
+2. Choose a collection (e.g. FAQ or Release Notes).
+3. Click **Create** and fill in the fields.
+4. Save — in GitHub mode this opens a pull request; in local mode the file is written immediately.
+
+## Editing files directly
+
+Because Keystatic stores content as plain files, you can create or edit Markdown and MDX files in your editor of choice. Just make sure the frontmatter matches the schema defined in `keystatic.config.ts`.

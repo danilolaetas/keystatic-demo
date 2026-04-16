@@ -1,0 +1,59 @@
+---
+title: v4.0.0
+description: Keystatic GitHub OAuth on Cloud Hub
+version: 4.0.0
+releaseDate: 2026-04-16
+type: major
+status: published
+---
+# Release Notes v10
+
+## Keystatic GitHub OAuth on Cloud Hub
+
+This release enables Keystatic's GitHub authentication to work correctly when deployed on Cloud Hub.
+
+### Changes
+
+#### Middleware for Proxy URL Rewriting
+
+Added Astro middleware (`src/middleware.ts`) to handle reverse proxy URL rewriting. Cloud Hub's reverse proxy routes requests to containers, but the internal `Host` header shows `localhost:3000`. The middleware rewrites the request URL using:
+
+* `x-forwarded-host` and `x-forwarded-proto` headers (if available)
+* Falls back to `SITE_URL` environment variable
+
+This ensures Keystatic generates the correct OAuth `redirect_uri` pointing to the Cloud Hub domain instead of localhost.
+
+#### Cloud Hub Egress Configuration
+
+Added egress labels to `docker-compose.yml` to allow outbound traffic to GitHub:
+
+```yaml
+labels:
+  - 'com.calponia.egress.fqdns.0.exact=github.com'
+  - 'com.calponia.egress.fqdns.1.exact=api.github.com'
+```
+
+Cloud Hub blocks all outbound internet traffic by default. Without these rules, the container cannot reach GitHub's API to exchange OAuth authorization codes for access tokens.
+
+#### Debug Endpoints (Development)
+
+Added temporary debug endpoints for troubleshooting:
+
+* `/api/debug-env` - Verifies environment variables are correctly set
+* `/api/test-github-token` - Tests GitHub API connectivity
+
+### Environment Variables Required
+
+| Variable                           | Description                                                               |
+| ---------------------------------- | ------------------------------------------------------------------------- |
+| `SITE_URL`                         | Full URL of the deployed site (e.g., `https://xxx.app.cloudhub.etas.com`) |
+| `KEYSTATIC_GITHUB_CLIENT_ID`       | GitHub OAuth App client ID                                                |
+| `KEYSTATIC_GITHUB_CLIENT_SECRET`   | GitHub OAuth App client secret                                            |
+| `KEYSTATIC_SECRET`                 | Secret for session encryption (64 hex chars)                              |
+| `PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` | GitHub App slug name                                                      |
+
+### Key Learnings
+
+1. **Build-time vs Runtime**: Astro's `site` config is evaluated at build time. Pass `SITE_URL` as a build argument and set it in the Dockerfile.
+2. **Cloud Hub Networking**: Containers have no internet access by default. Whitelist required domains via egress labels.
+3. **Reverse Proxy Headers**: Don't assume `x-forwarded-*` headers are passed. Always have a fallback mechanism.

@@ -1,0 +1,31 @@
+---
+title: v3.0.0
+description: Major release with Astro 6 support and new storage adapters.
+version: 3.0.0
+releaseDate: 2026-04-14
+type: major
+status: draft
+---
+
+### Highlights
+
+- **Astro 6 support** — Full compatibility with Astro 6, including the new content layer API and
+  server islands.
+- **S3 storage adapter** — A new storage backend that reads and writes content to an S3-compatible
+  bucket, enabling deployments without Git access.
+- **Improved admin performance** — The entry list loads up to 3x faster on collections with more
+  than 500 entries thanks to virtual scrolling.
+- **Dark mode for the admin UI** — The Keystatic admin panel now respects `prefers-color-scheme` and
+  includes a manual toggle.
+
+### Migration guide
+
+1. Update all `@keystatic/*` packages to `^3.0.0`.
+2. Replace `fields.document` with `fields.mdx` if you haven't already (deprecated since v2.3.0).
+3. If using a custom reader, update imports from `@keystatic/core/reader` — the `createReader`
+   signature now requires a storage config object instead of a base path.
+
+### Bug fixes
+
+- Fixed hot-reload losing unsaved changes in the admin UI during development.
+- GitHub mode now supports repositories with more than 1,000 files in a single directory.

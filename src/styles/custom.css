@@ -1,0 +1,110 @@
+h1 {
+  margin-bottom: var(--spacing-20);
+}
+
+@layer starlight.core {
+  @media (min-width: 72rem) {
+    .sl-container {
+      margin-inline: unset;
+    }
+  }
+}
+
+site-search dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  max-width: 40rem;
+  max-height: calc(100% - 4rem);
+  width: 90%;
+  height: max-content;
+}
+
+@media (max-width: 50rem) {
+  site-search dialog {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+}
+
+/* ── Header (gradient background, white text) ── */
+header.header {
+  background: var(--gradient-horizontal);
+  border-bottom: none;
+}
+
+site-search {
+  color: var(--core-surface-0);
+}
+
+site-search button:hover {
+  color: var(--core-surface-0);
+  opacity: 0.8;
+}
+
+kbd {
+  display: none;
+}
+
+li {
+  border-inline-start: none;
+}
+
+/* ── Sidebar ── */
+nav.sidebar {
+  background: var(--side-navigation-background);
+  border-right: var(--side-navigation-border);
+}
+
+nav.sidebar a {
+  color: var(--side-navigation-menuitem-color);
+  border-radius: var(--border-radius-20);
+}
+
+nav.sidebar a:hover {
+  background: var(--side-navigation-menuitem-hover-background);
+  color: var(--side-navigation-menuitem-hover-color);
+}
+
+nav.sidebar a[aria-current="page"] {
+  background: var(--side-navigation-menuitem-active-background);
+  color: var(--side-navigation-menuitem-active-color);
+  font-weight: var(--font-weight-semibold);
+}
+
+summary {
+  margin-top: 1rem;
+}
+
+/* ── Footer ── */
+footer.footer {
+  background: var(--footer-background);
+  border-top: var(--footer-border);
+  color: var(--global-text-color);
+}
+
+/* ── Downloads Panel (right sidebar) ── */
+.downloads-panel h2 {
+  color: var(--global-text-color);
+}
+
+.downloads-panel .download-link {
+  background: var(--button-secondary-background);
+  color: var(--button-secondary-color);
+}
+
+.downloads-panel .download-link:hover {
+  background: var(--button-secondary-active-background);
+  color: var(--button-secondary-active-color);
+}
+
+.downloads-panel .download-link:hover .download-icon {
+  filter: brightness(1.3);
+}
+
+.pagefind-ui__result-title {
+  margin: var(--spacing-m) 0 0 0 !important;
+}

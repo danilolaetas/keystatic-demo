@@ -1,0 +1,61 @@
+---
+import EditLink from 'virtual:starlight/components/EditLink';
+import LastUpdated from 'virtual:starlight/components/LastUpdated';
+import Pagination from 'virtual:starlight/components/Pagination';
+---
+
+<footer>
+  <div class="meta">
+    <EditLink />
+    <LastUpdated />
+  </div>
+  <Pagination />
+  <div class="footer-bar">
+    <span>Built with Starlight + Keystatic</span>
+    <span class="separator">&middot;</span>
+    <a href="/keystatic">Content Admin</a>
+  </div>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .meta {
+    display: flex;
+    gap: 0.75rem 3rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    font-size: var(--sl-text-sm);
+    color: var(--theme-text-color);
+  }
+  .footer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
+    margin-top: 1rem;
+    background: var(--footer-background);
+    border-top: var(--footer-border);
+    min-height: var(--footer-height);
+    font: var(--text-regular-xs);
+    color: var(--theme-text-color);
+  }
+  .footer-bar a {
+    color: var(--link-primary-color);
+    text-decoration: none;
+    font: var(--text-semibold-xs);
+    transition: color 0.15s ease;
+  }
+  .footer-bar a:hover {
+    color: var(--link-primary-hover-color);
+  }
+  .separator {
+    color: var(--core-gray-400);
+  }
+</style>

@@ -1,0 +1,20 @@
+---
+title: v2.4.0
+description: MDX support improvements and new date field defaults.
+version: 2.4.0
+releaseDate: 2026-04-10
+type: minor
+status: published
+---
+
+## Highlights
+
+- **MDX field toolbar** — The content editor now includes formatting buttons for bold, italic, links, and code blocks directly in the MDX field.
+- **Date field defaults** — Date and datetime fields can now be initialized to `today` or `now` using a `defaultValue` option.
+- **Improved slug validation** — Slug fields accept a `pattern` option with a custom regex and error message.
+
+## Bug fixes
+
+- Fixed an issue where multiselect defaults were not applied on new entries.
+- Resolved a rendering glitch in the image field preview on Safari.
+- The reader API now correctly resolves linked files in nested objects.

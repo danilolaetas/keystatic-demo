@@ -1,0 +1,8 @@
+---
+// Force light mode - replaces Starlight's ThemeProvider
+// This sets the theme before any CSS loads, preventing flash of wrong theme
+---
+
+<script is:inline>
+  document.documentElement.dataset.theme = 'light';
+</script>

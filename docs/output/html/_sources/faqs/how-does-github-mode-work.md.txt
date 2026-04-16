@@ -1,0 +1,28 @@
+---
+title: How does GitHub mode work?
+description: Understanding Keystatic's GitHub storage backend.
+category: technical
+---
+
+GitHub mode lets non-technical editors propose content changes through the Keystatic UI while keeping your repository as the single source of truth.
+
+## Setup
+
+In `keystatic.config.ts`, set the storage kind to `github` and provide your repo:
+
+```ts
+storage: {
+  kind: "github",
+  repo: "owner/repo-name",
+  branchPrefix: "content/",
+}
+```
+
+## What happens when an editor saves?
+
+1. Keystatic creates a new branch prefixed with `content/`.
+2. The content change is committed to that branch.
+3. A pull request is opened against the default branch.
+4. Your team reviews and merges the PR like any other code change.
+
+This means every content edit goes through version control and can be rolled back at any time.

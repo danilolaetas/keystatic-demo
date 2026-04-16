@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  keystatic-demo:
+    image: 'docker.pantaris.io/be2ff449-7134-4ec0-8172-9a6911e152b9/keystatic-demo:2.0.1'
+    container_name: keystatic-demo
+    ports:
+      - '3000:3000'
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3000
+      - NODE_ENV=production
+      - SITE_URL=${SITE_URL}
+      - KEYSTATIC_GITHUB_CLIENT_ID=${KEYSTATIC_GITHUB_CLIENT_ID}
+      - KEYSTATIC_GITHUB_CLIENT_SECRET=${KEYSTATIC_GITHUB_CLIENT_SECRET}
+      - PUBLIC_KEYSTATIC_GITHUB_APP_SLUG=${PUBLIC_KEYSTATIC_GITHUB_APP_SLUG}
+      - KEYSTATIC_SECRET=${KEYSTATIC_SECRET}
+    restart: unless-stopped
+    labels:
+      - 'com.calponia.networking.0.port=3000'

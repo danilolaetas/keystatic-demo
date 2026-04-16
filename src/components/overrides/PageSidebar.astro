@@ -1,0 +1,179 @@
+---
+import MobileTableOfContents from 'virtual:starlight/components/MobileTableOfContents';
+import TableOfContents from 'virtual:starlight/components/TableOfContents';
+
+const pageId = Astro.locals.starlightRoute?.id;
+
+const perPageDownloads = pageId ? [
+  { name: 'PDF', href: `/api/downloads/pages/${pageId}/page.pdf`, icon: 'pdf' },
+  { name: 'EPUB', href: `/api/downloads/pages/${pageId}/page.epub`, icon: 'epub' },
+] : [];
+
+const fullDocDownloads = [
+  { name: 'PDF', href: '/api/downloads/keystatic-demo.pdf', icon: 'pdf' },
+  { name: 'EPUB', href: '/api/downloads/KeystaticDemo.epub', icon: 'epub' },
+  { name: 'HTML', href: '/api/downloads/html.zip', icon: 'html' },
+];
+---
+
+{
+  Astro.locals.starlightRoute.toc && (
+    <>
+      <div class="lg:sl-hidden">
+        <MobileTableOfContents />
+      </div>
+      <div class="right-sidebar-panel sl-hidden lg:sl-block">
+        <div class="sl-container">
+          <TableOfContents />
+        </div>
+      </div>
+    </>
+  )
+}
+
+<div class="right-sidebar-panel downloads-panel sl-hidden lg:sl-block">
+  <div class="sl-container">
+    <h2>Downloads</h2>
+    
+    {perPageDownloads.length > 0 && (
+      <>
+        <h3 class="downloads-section-title">This Page</h3>
+        <ul class="downloads-list">
+          {perPageDownloads.map((download) => (
+            <li>
+              <a href={download.href} download class={`download-link download-${download.icon}`}>
+                <span class="download-icon" aria-hidden="true"></span>
+                <span class="download-name">{download.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+    
+    <h3 class="downloads-section-title">Full Documentation</h3>
+    <ul class="downloads-list">
+      {fullDocDownloads.map((download) => (
+        <li>
+          <a href={download.href} download class={`download-link download-${download.icon}`}>
+            <span class="download-icon" aria-hidden="true"></span>
+            <span class="download-name">{download.name}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  @layer starlight.core {
+    .right-sidebar-panel {
+      padding: var(--spacing-m) var(--spacing-l);
+    }
+    .sl-container {
+      width: calc(var(--sl-sidebar-width) - 2 * var(--spacing-l));
+    }
+    .right-sidebar-panel :global(h2) {
+      color: var(--global-text-color);
+      font-size: var(--font-size-s);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--line-height-s);
+      margin-bottom: var(--spacing-xs);
+    }
+    .right-sidebar-panel :global(:where(a)) {
+      display: block;
+      font-size: var(--font-size-xs);
+      text-decoration: none;
+      color: var(--global-text-secondary-color);
+      overflow-wrap: anywhere;
+    }
+    .right-sidebar-panel :global(:where(a):hover) {
+      color: var(--global-text-color);
+    }
+    @media (min-width: 72rem) {
+      .sl-container {
+        max-width: calc(
+          (
+            (
+                100vw - var(--sl-sidebar-width) - 2 * var(--spacing-xl) - 2 *
+                  var(--spacing-l)
+              ) * 0.25
+          )
+        );
+      }
+    }
+  }
+
+  .downloads-panel {
+    border-top: 1px solid var(--core-gray-200);
+    margin-top: var(--spacing-m);
+    padding-top: var(--spacing-l);
+  }
+
+  .downloads-section-title {
+    color: var(--global-text-secondary-color);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--spacing-s);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .downloads-section-title:first-of-type {
+    margin-top: 0;
+  }
+
+  .downloads-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .download-link {
+    display: flex !important;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-s);
+    border-radius: var(--border-radius-8);
+    background: var(--side-navigation-menuitem-hover-background);
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .download-link:hover {
+    background: var(--side-navigation-menuitem-active-background);
+  }
+
+  .download-icon {
+    font-family: 'Phosphor';
+    font-size: var(--global-icon-size-large);
+    line-height: 1;
+    flex-shrink: 0;
+    speak: never;
+    font-style: normal;
+    font-weight: var(--font-weight-regular);
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .download-pdf .download-icon::before {
+    content: '\eaf5';
+  }
+
+  .download-epub .download-icon::before {
+    content: '\e9c7';
+  }
+
+  .download-html .download-icon::before {
+    content: '\eaed';
+  }
+
+  .download-name {
+    font-weight: var(--font-weight-semibold);
+  }
+</style>

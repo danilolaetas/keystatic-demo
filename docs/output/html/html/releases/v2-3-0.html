@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>v2.3.0 &mdash; Keystatic Demo  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="v2.3.1" href="v2-3-1.html" />
+    <link rel="prev" title="What is Keystatic?" href="../faqs/what-is-keystatic.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Keystatic Demo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/can-i-use-mdx.html">Can I use MDX components?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/how-do-i-add-content.html">How do I add content?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/how-does-github-mode-work.html">How does GitHub mode work?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/what-is-keystatic.html">What is Keystatic?</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">v2.3.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#highlights">Highlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#breaking-changes">Breaking changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="v2-3-1.html">v2.3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v2-4-0.html">v2.4.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v3-0-0.html">v3.0.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v4-0-0.html">v4.0.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v4-0-0.html#release-notes-v10">Release Notes v10</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Keystatic Demo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">v2.3.0</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/releases/v2-3-0.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="v2-3-0">
+<h1>v2.3.0<a class="headerlink" href="#v2-3-0" title="Link to this heading"></a></h1>
+<section id="highlights">
+<h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Blocks field</strong> — A new polymorphic array field that lets editors build pages from different
+block types (rich text, callouts, CTAs, embeds).</p></li>
+<li><p><strong>Conditional fields</strong> — Fields can now change their schema based on a discriminant select,
+enabling template-style entry forms.</p></li>
+<li><p><strong>Multi-relationship field</strong> — Reference multiple entries from another collection with optional
+length validation.</p></li>
+</ul>
+</section>
+<section id="breaking-changes">
+<h2>Breaking changes<a class="headerlink" href="#breaking-changes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">fields.document</span></code> field has been renamed to <code class="docutils literal notranslate"><span class="pre">fields.mdx</span></code>. A codemod is available:
+<code class="docutils literal notranslate"><span class="pre">npx</span> <span class="pre">&#64;keystatic/codemods</span> <span class="pre">document-to-mdx</span></code>.</p></li>
+</ul>
+</section>
+<section id="bug-fixes">
+<h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Array fields now preserve item order after drag-and-drop reordering.</p></li>
+<li><p>Fixed TypeScript types for the <code class="docutils literal notranslate"><span class="pre">fields.object</span></code> helper when used inside arrays.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../faqs/what-is-keystatic.html" class="btn btn-neutral float-left" title="What is Keystatic?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="v2-3-1.html" class="btn btn-neutral float-right" title="v2.3.1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Keystatic Demo Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

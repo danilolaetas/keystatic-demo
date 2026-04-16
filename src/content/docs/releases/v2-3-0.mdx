@@ -1,0 +1,27 @@
+---
+title: v2.3.0
+description: Blocks field and conditional field support.
+version: 2.3.0
+releaseDate: 2026-03-01
+type: minor
+status: published
+---
+
+### Highlights
+
+- **Blocks field** — A new polymorphic array field that lets editors build pages from different
+  block types (rich text, callouts, CTAs, embeds).
+- **Conditional fields** — Fields can now change their schema based on a discriminant select,
+  enabling template-style entry forms.
+- **Multi-relationship field** — Reference multiple entries from another collection with optional
+  length validation.
+
+### Breaking changes
+
+- The `fields.document` field has been renamed to `fields.mdx`. A codemod is available:
+  `npx @keystatic/codemods document-to-mdx`.
+
+### Bug fixes
+
+- Array fields now preserve item order after drag-and-drop reordering.
+- Fixed TypeScript types for the `fields.object` helper when used inside arrays.

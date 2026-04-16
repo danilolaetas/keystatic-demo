@@ -1,0 +1,70 @@
+name: Generate Documentation
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'src/content/docs/**'
+      - 'docs/conf.py'
+      - 'docs/index.md'
+      - 'scripts/prepare-sphinx-content.sh'
+      - 'scripts/build-per-page-docs.sh'
+  workflow_dispatch: # allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: docs/requirements.txt
+
+      - name: Install Sphinx and dependencies
+        run: pip install -r docs/requirements.txt
+
+      - name: Prepare content (MDX → MD)
+        run: sh scripts/prepare-sphinx-content.sh
+
+      - name: Build PDF (rinohtype)
+        run: sphinx-build -b rinoh docs docs/_build/pdf
+
+      - name: Build EPUB
+        run: sphinx-build -b epub docs docs/_build/epub
+
+      - name: Build HTML
+        run: sphinx-build -b html docs docs/_build/html
+
+      - name: Build per-page PDFs and EPUBs
+        run: sh scripts/build-per-page-docs.sh
+
+      - name: Collect output
+        run: |
+          mkdir -p docs/output
+          cp docs/_build/pdf/*.pdf docs/output/ 2>/dev/null || true
+          cp docs/_build/epub/*.epub docs/output/ 2>/dev/null || true
+          cp -r docs/_build/html docs/output/html 2>/dev/null || true
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation
+          path: docs/output/
+          retention-days: 90
+
+      - name: Commit generated docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/output/
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "docs: regenerate PDF, EPUB, and HTML from content changes"
+          git push

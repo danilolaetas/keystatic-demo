@@ -1,0 +1,24 @@
+---
+title: Can I use MDX components?
+description: Using custom components inside Keystatic content.
+category: technical
+---
+
+Yes. Keystatic supports MDX out of the box, so you can embed React components directly in your
+content files.
+
+### Example
+
+```jsx
+import { Callout } from '../components/Callout'
+
+;<Callout type='info'>This is a custom callout rendered from a React component.</Callout>
+```
+
+### Things to keep in mind
+
+- Components must be importable from the content file's location.
+- The MDX field in Keystatic gives editors a rich-text toolbar, but raw component syntax is
+  preserved as-is.
+- If you need structured data instead of freeform markup, consider using Keystatic's `fields.object`
+  or `fields.blocks` instead of MDX components.

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>v3.0.0 &mdash; Keystatic Demo  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="v4.0.0" href="v4-0-0.html" />
+    <link rel="prev" title="v2.4.0" href="v2-4-0.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Keystatic Demo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/can-i-use-mdx.html">Can I use MDX components?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/how-do-i-add-content.html">How do I add content?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/how-does-github-mode-work.html">How does GitHub mode work?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/what-is-keystatic.html">What is Keystatic?</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="v2-3-0.html">v2.3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v2-3-1.html">v2.3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v2-4-0.html">v2.4.0</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">v3.0.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#highlights">Highlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#migration-guide">Migration guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="v4-0-0.html">v4.0.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v4-0-0.html#release-notes-v10">Release Notes v10</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Keystatic Demo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">v3.0.0</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/releases/v3-0-0.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="v3-0-0">
+<h1>v3.0.0<a class="headerlink" href="#v3-0-0" title="Link to this heading"></a></h1>
+<section id="highlights">
+<h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Astro 6 support</strong> — Full compatibility with Astro 6, including the new content layer API and
+server islands.</p></li>
+<li><p><strong>S3 storage adapter</strong> — A new storage backend that reads and writes content to an S3-compatible
+bucket, enabling deployments without Git access.</p></li>
+<li><p><strong>Improved admin performance</strong> — The entry list loads up to 3x faster on collections with more
+than 500 entries thanks to virtual scrolling.</p></li>
+<li><p><strong>Dark mode for the admin UI</strong> — The Keystatic admin panel now respects <code class="docutils literal notranslate"><span class="pre">prefers-color-scheme</span></code> and
+includes a manual toggle.</p></li>
+</ul>
+</section>
+<section id="migration-guide">
+<h2>Migration guide<a class="headerlink" href="#migration-guide" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Update all <code class="docutils literal notranslate"><span class="pre">&#64;keystatic/*</span></code> packages to <code class="docutils literal notranslate"><span class="pre">^3.0.0</span></code>.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">fields.document</span></code> with <code class="docutils literal notranslate"><span class="pre">fields.mdx</span></code> if you haven’t already (deprecated since v2.3.0).</p></li>
+<li><p>If using a custom reader, update imports from <code class="docutils literal notranslate"><span class="pre">&#64;keystatic/core/reader</span></code> — the <code class="docutils literal notranslate"><span class="pre">createReader</span></code>
+signature now requires a storage config object instead of a base path.</p></li>
+</ol>
+</section>
+<section id="bug-fixes">
+<h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Fixed hot-reload losing unsaved changes in the admin UI during development.</p></li>
+<li><p>GitHub mode now supports repositories with more than 1,000 files in a single directory.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="v2-4-0.html" class="btn btn-neutral float-left" title="v2.4.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="v4-0-0.html" class="btn btn-neutral float-right" title="v4.0.0" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Keystatic Demo Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
